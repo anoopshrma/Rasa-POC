@@ -17,3 +17,5 @@ rasa run -m models --enable-api --cors "*"
 
 rasa run actions
 ```
+
+## To run the widget open the index.html file in your browser
