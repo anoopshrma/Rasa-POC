@@ -1,0 +1,4 @@
+rasa==2.4.1
+python-engineio==3.11.0
+python-socketio==4.4.0
+rasa-sdk==2.8.4
