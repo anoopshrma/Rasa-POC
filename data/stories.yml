@@ -8,31 +8,27 @@ stories:
   - action: utter_greet
   - action: utter_menu
 
-- story: combined begin with url
+- story: Provides support for Admin Queries
   steps:
-  - intent: greet
-  - action: utter_greet
-  - action: utter_menu
-  - intent: begin_lead
-  - action: utter_lead_q1
-  - action: lead_form_p1
-  - intent: accept
-  - action: lead_form_p2
-  - action: lead_form_p3
-  - action: utter_lead_q3
-  - action: utter_lead_q4
-  - action: utter_lead_q5
+  - intent: admin_query
+  - action: utter_admin_query
+  - action: suport_form_query
+  - action: utter_query_data
+  - action: utter_final_bye
 
-- story: combined begin without url
+- story: Provides support for Admin Request
   steps:
-  - intent: greet
-  - action: utter_greet
-  - action: utter_menu
-  - intent: begin_lead
-  - action: utter_lead_q1
-  - action: lead_form_p1
-  - intent: reject
-  - action: lead_form_p3
-  - action: utter_lead_q3
-  - action: utter_lead_q4
-  - action: utter_lead_q5
+  - intent: admin_requests
+  - action: utter_admin_request
+  - action: suport_form_query
+  - action: utter_query_data
+  - action: utter_final_bye
+
+- story: Provides support for Claims
+  steps:
+  - intent: claims
+  - action: utter_claims
+  - action: suport_form_query
+  - action: utter_query_data
+  - action: utter_final_bye
+

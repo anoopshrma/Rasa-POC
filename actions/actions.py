@@ -5,18 +5,18 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormAction
 
 
-class LeadFormFirstPart(FormAction):
+class SupportForm(FormAction):
     """Example of a custom form action"""
 
     def name(self) -> Text:
         """Unique identifier of the form"""
 
-        return "lead_form_p1"
+        return "support_form_query"
 
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
         """A list of required slots that the form has to fill"""
-        return ["requirement", "mockup"]
+        return ["subject", "summary","email","number","priority"]
 
     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
         """A dictionary to map required slots to
@@ -25,98 +25,20 @@ class LeadFormFirstPart(FormAction):
             - a whole message
             or a list of them, where a first match will be picked"""
         return {
-            "requirement": [
+            "subject": [
                 self.from_text(),
             ],
-            "mockup": [
+            "summary": [
                 self.from_text(),
             ],
-        }
 
-    def submit(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[Dict]:
-        """Define what the form has to do
-            after all required slots are filled"""
-
-        # utter submit template
-        dispatcher.utter_template("utter_urlAvailable", tracker)
-        return []
-
-
-class LeadFormSecondPart(FormAction):
-    """Example of a custom form action"""
-
-    def name(self) -> Text:
-        """Unique identifier of the form"""
-
-        return "lead_form_p2"
-
-    @staticmethod
-    def required_slots(tracker: Tracker) -> List[Text]:
-        """A list of required slots that the form has to fill"""
-        return ["url"]
-
-    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
-        """A dictionary to map required slots to
-            - an extracted entity
-            - intent: value pairs
-            - a whole message
-            or a list of them, where a first match will be picked"""
-        return {
-            "url": [
-                self.from_text(),
-            ],
-        }
-
-    def submit(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[Dict]:
-        """Define what the form has to do
-            after all required slots are filled"""
-            
-        return []
-
-
-class LeadFormThirdPart(FormAction):
-    """Example of a custom form action"""
-
-    def name(self) -> Text:
-        """Unique identifier of the form"""
-
-        return "lead_form_p3"
-
-    @staticmethod
-    def required_slots(tracker: Tracker) -> List[Text]:
-        """A list of required slots that the form has to fill"""
-        return ["timeline", "budget", "name", "email", "phone"]
-
-    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
-        """A dictionary to map required slots to
-            - an extracted entity
-            - intent: value pairs
-            - a whole message
-            or a list of them, where a first match will be picked"""
-        return {
-            "timeline": [
-                self.from_text(),
-            ],
-            "budget": [
-                self.from_text(),
-            ],
-            "name": [
-                self.from_text(),
-            ],
             "email": [
                 self.from_text(),
             ],
-            "phone": [
+            "number": [
+                self.from_text(),
+            ],
+            "priority": [
                 self.from_text(),
             ],
         }
@@ -130,6 +52,7 @@ class LeadFormThirdPart(FormAction):
         """Define what the form has to do
             after all required slots are filled"""
 
-        # utter submit template
-        dispatcher.utter_template("utter_lead_q2", tracker)
+        # Display thank you note after sccesful form completion
+        dispatcher.utter_message("Thanks for answering all our questions and being this patient. We appreciate it!")
         return []
+

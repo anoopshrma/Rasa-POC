@@ -15,37 +15,17 @@ intents:
     use_entities: true
 entities: []
 slots:
-  requirement:
+  subject:
     type: rasa.shared.core.slots.UnfeaturizedSlot
     initial_value: null
     auto_fill: false
     influence_conversation: false
-  mockup:
+  summary:
     type: rasa.shared.core.slots.UnfeaturizedSlot
     initial_value: null
     auto_fill: false
     influence_conversation: false
-  url:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  timeline:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  budget:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  name:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  email:
+  priority:
     type: rasa.shared.core.slots.UnfeaturizedSlot
     initial_value: null
     auto_fill: false
@@ -55,113 +35,89 @@ slots:
     initial_value: null
     auto_fill: false
     influence_conversation: false
+  email:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
 responses:
   utter_greet:
-  - text: Hi! I am John from Cedex Technologies LLP. We provide high quality and cost-effective Web, Mobile, Chatbot and Voicebot solutions.
+  - text: Hi! I'm Admin Support Bot from ZingHR. I can help you in raising a new support request. 
   utter_menu:
   - buttons:
-    - payload: /begin_lead
-      title: Web Application Development
-    - payload: /begin_lead
-      title: Mobile App Development
-    - payload: /begin_lead
-      title: Chatbot Development
-    - payload: /begin_lead
-      title: Frontend Development
-    - payload: /begin_lead
-      title: Progessive Web App Development
-    - payload: /begin_lead
-      title: AI & Machine Learning
-    text: What are you looking for today?
-  utter_lead_q1:
-  - text: Great. We have developed more than 100+ web applications till date!
-  utter_ask_requirement:
-  - text: Can you share some brief description of your requirements?
-  utter_ask_mockup:
-  - buttons:
-    - payload: Wireframes
-      title: Wireframes
-    - payload: Designs
-      title: Designs
-    - payload: RFP or any Document
-      title: RFP or any Document
-    - payload: None
-      title: None
-    text: |-
-      Alright! 
+    - payload: /admin_query
+      title: Admin Query
+    - payload: /admin_requests
+      title: Admin Requests
+    - payload: /claims
+      title: Claims
+    text: Please select from the below options
 
-      Do you have any of the following ready?
-  utter_urlAvailable:
+  utter_admin_query:
   - buttons:
-    - payload: yes
-      title: Yes
-    - payload: no
-      title: No
-    text: Is there any URL that you would like to share for our reference?
-  utter_ask_url:
-  - text: Could you please share the URL with us?
-  utter_ask_timeline:
-  - buttons:
-    - payload: Immediately
-      title: Immediately
-    - payload: within a month
-      title: within a month
-    - payload: within the next 3 months
-      title: within the next 3 months
-    - payload: after 3 months
-      title: after 3 months
-    text: When do you plan to enter development with this project?
-  utter_ask_budget:
-  - buttons:
-    - payload: Below $5000
-      title: Below $5000
-    - payload: $5000 - $15000
-      title: $5000 - $15000
-    - payload: $15000 - $25000
-      title: $15000 - $25000
-    - payload: $25000 and above
-      title: $25000 and above
-    text: |-
-      Great!
+    - payload: System Allocation
+      title: System Allocation
+    text: For Admin Query, We have the following ticket types available
 
-      What is your earmarked budget for this project?
-  utter_ask_name:
-  - text: Great. May I know your name please?
+  utter_admin_request:
+  - buttons:
+    - payload: Admin Request
+      title: Admin Request
+    - payload: Stationary
+      title: Stationary
+    - payload: Salary Certificate Request
+      title: Salary Certificate Request
+    - payload: Salary
+      title: Salary
+    text: For Admin Requests, We have the following ticket types available
+
+  utter_claims:
+  - buttons:
+    - payload: Claim Reimbursements
+      title: Claim Reimbursements
+    text: For Claims, We have the following ticket types available
+
+  utter_ask_subject:
+  - text: Please provide a Subject name for the query
+  utter_ask_priority:
+  - buttons:
+    - payload: Low
+      title: Low
+    - payload: Medium
+      title: Medium
+    - payload: High
+      title: High
+    text: Please select a priority for the ticket
+      
+  utter_ask_summary:
+  - text: Provide a summary for your query
   utter_ask_email:
-  - text: Can you please share your email ID? Trust us, we will never spam!
+  - text: Please provide your email
   utter_ask_phone:
-  - text: Can I have your phone number
-  utter_lead_q2:
+  - text: Plase provide your phone number
+  utter_thankyou:
   - text: Thanks for answering all our questions and being this patient. We appreciate it!
-  utter_lead_q3:
+  utter_query_data:
   - text: |-
       Here is your data: 
-       - requirement: {requirement}
-       - mockup: {mockup}
-       - url: {url}
-       - timeline: {timeline}
-       - budget: {budget}
-       - name: {name}
+       - subject: {subject}
+       - summary: {summary}
+       - phone number: {number}
        - email: {email}
        - phone: {phone}
-  utter_lead_q4:
-  - text: I will have our Business Experts get in touch with you soon, to make your project a reality!
-  utter_lead_q5:
-  - text: In the meanwhile for anything, you can contact us at sales@cedextech.com or +91 888 999 9999
+  utter_final_bye:
+  - text: Your query has been recieved, you will get further updates on mail.
 actions:
 - utter_greet
 - utter_menu
-- utter_urlAvailable
-- utter_lead_q1
-- utter_lead_q2
-- utter_lead_q3
-- utter_lead_q4
-- utter_lead_q5
-- lead_form_p1
-- lead_form_p2
-- lead_form_p3
+- support_form_query
+- utter_final_bye
+- utter_thankyou
+- utter_query_data
+- utter_claims
+- utter_admin_request
+- utter_admin_query
+
 forms:
-  lead_form_p1: {}
-  lead_form_p2: {}
-  lead_form_p3: {}
+  support_form_query: {}
 e2e_actions: []

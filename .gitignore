@@ -134,3 +134,13 @@ dmypy.json
 
 # Rasa Dependencies
 *.rasa*
+
+node_modules/
+models/
+*.tar.gz
+Widget/customer.html
+Widget/static/js/lib.rar
+Widget/static/js/lib.zip
+Widget/static/js/widget-load.js
+server.js
+package-lock.json

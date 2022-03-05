@@ -34,12 +34,12 @@ nlu:
     - never
     - don't do
 
-- intent: begin_lead
+- intent: begin_support
   examples: |
-    - begin lead
-    - Web Application Development
-    - Mobile App Development
-    - Chatbot Development
-    - Frontend Development
-    - Progessive Web App Development
-    - AI & Machine Learning
+    - Admin Query
+    - Admin Requests
+    - Claims
+
+- intent: admin_query
+- intent: admin_requests
+- intent: claims
