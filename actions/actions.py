@@ -5,18 +5,18 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormAction
 
 
-class SupportForm(FormAction):
+class SupportQueryForm(FormAction):
     """Example of a custom form action"""
 
     def name(self) -> Text:
         """Unique identifier of the form"""
 
-        return "support_form_query"
+        return "lead_form_p2"
 
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
         """A list of required slots that the form has to fill"""
-        return ["subject", "summary","email","number","priority"]
+        return ["subject", "summary","email","phone","priority"]
 
     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
         """A dictionary to map required slots to
@@ -35,7 +35,7 @@ class SupportForm(FormAction):
             "email": [
                 self.from_text(),
             ],
-            "number": [
+            "phone": [
                 self.from_text(),
             ],
             "priority": [
@@ -55,4 +55,3 @@ class SupportForm(FormAction):
         # Display thank you note after sccesful form completion
         dispatcher.utter_message("Thanks for answering all our questions and being this patient. We appreciate it!")
         return []
-

@@ -43,3 +43,4 @@ nlu:
 - intent: admin_query
 - intent: admin_requests
 - intent: claims
+- intent: support_query

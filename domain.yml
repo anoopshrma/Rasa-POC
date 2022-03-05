@@ -55,25 +55,25 @@ responses:
 
   utter_admin_query:
   - buttons:
-    - payload: System Allocation
+    - payload: /support_query
       title: System Allocation
     text: For Admin Query, We have the following ticket types available
 
   utter_admin_request:
   - buttons:
-    - payload: Admin Request
+    - payload: /support_query
       title: Admin Request
-    - payload: Stationary
+    - payload: /support_query
       title: Stationary
-    - payload: Salary Certificate Request
+    - payload: /support_query
       title: Salary Certificate Request
-    - payload: Salary
+    - payload: /support_query
       title: Salary
     text: For Admin Requests, We have the following ticket types available
 
   utter_claims:
   - buttons:
-    - payload: Claim Reimbursements
+    - payload: /support_query
       title: Claim Reimbursements
     text: For Claims, We have the following ticket types available
 
@@ -102,7 +102,7 @@ responses:
       Here is your data: 
        - subject: {subject}
        - summary: {summary}
-       - phone number: {number}
+       - priority: {priority}
        - email: {email}
        - phone: {phone}
   utter_final_bye:
@@ -110,14 +110,15 @@ responses:
 actions:
 - utter_greet
 - utter_menu
-- support_form_query
 - utter_final_bye
 - utter_thankyou
 - utter_query_data
 - utter_claims
 - utter_admin_request
 - utter_admin_query
+- lead_form_p2
 
 forms:
-  support_form_query: {}
+  lead_form_p2: {}
+
 e2e_actions: []
